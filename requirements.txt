@@ -1,5 +1,4 @@
 lxml
 MarkupSafe>=1.1.1
-pycryptodome>=3.9.8
 Werkzeug>=1.0.1
 django==2.0.7
