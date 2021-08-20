@@ -71,10 +71,6 @@ node {
                    }
       	     print "${response}"
       	}
-      	catch (err) {
-                  echo err.getMessage()
-                  echo "Error detected"
-      	}
       }
 
       stage('Deploy Application') {
