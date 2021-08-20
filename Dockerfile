@@ -12,7 +12,7 @@ COPY dsvw.py pcc-dsvw/dsvw.py
 
 RUN pip3 install -r pcc-dsvw/requirements.txt
 
-EXPOSE 8000
+EXPOSE 80
 
 CMD ["python3", "pcc-dsvw/dsvw.py"]
 

@@ -39,8 +39,8 @@ spec:
   type: NodePort
   ports:
   - name: web
-    targetPort: 8000
-    port: 8000
+    targetPort: 80
+    port: 80
     nodePort: 30800
   selector:
     app: dsvw
