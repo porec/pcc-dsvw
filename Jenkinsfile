@@ -1,13 +1,13 @@
 node {
     def app
 
-    stage('Clone repository') {
+    stage('Clone Repository to Build Server') {
         // Let's make sure we have the repository cloned to our workspace
         checkout scm
     }
 
 
-    stage('Check image Git dependencies with jenkins plugin') {
+    stage('Check image dependencies') {
        try {
          echo 'before plugin  scanning'
         withCredentials([usernamePassword(credentialsId: 'twistlock_creds', passwordVariable: 'TL_PASS', usernameVariable: 'TL_USER')]) {
@@ -25,7 +25,7 @@ node {
         app = docker.build("porcer/pcc-dsvw:${env.BUILD_ID}")
     }
 
-    stage('Scan Image and Publish to Jenkins') {
+    stage('Scan Image using Prisma Cloud Compute Policies and Publish to Jenkins') {
         try {
             prismaCloudScanImage ca: '', cert: '', dockerAddress: 'unix:///var/run/docker.sock', ignoreImageBuildTime: true, image: "porcer/pcc-dsvw:${env.BUILD_ID}", key: '', logLevel: 'debug', podmanPath: '', project: '', resultsFile: 'prisma-cloud-scan-results.json'
         } finally {
@@ -33,7 +33,7 @@ node {
         }
     }
 
-    stage('Scan image with twistcli') {
+    stage('Scan Image using Prisma Cloud Compute Policies with twistcli tool') {
         withCredentials([usernamePassword(credentialsId: 'twistlock_creds', passwordVariable: 'TL_PASS', usernameVariable: 'TL_USER')]) {
             sh 'curl -k -u $TL_USER:$TL_PASS --output ./twistcli https://$TL_CONSOLE:8083/api/v1/util/twistcli'
             sh 'sudo chmod a+x ./twistcli'
@@ -41,14 +41,14 @@ node {
         }
     }
 
-    stage('Publish') {
+    stage('Publish Image to Repository') {
       withDockerRegistry([ credentialsId: 'docker-hub-credentials', url: '' ]) {
         app.push("${env.BUILD_NUMBER}")
         app.push("latest")
           }
       }
 
-      stage('Deploy Vulnerable Web Python Application') {
+      stage('Deploy Application') {
           sh 'sudo kubectl apply -f deploy/pcc-dsvw.yaml'
           sh 'sudo sleep 10'
       }
