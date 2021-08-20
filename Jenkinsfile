@@ -71,9 +71,9 @@ node {
                    }
       	     print "${response}"
       	}
-
+          finally {
           echo "Results in BridgeCrew Console"
-
+        }
       }
 
       stage('Deploy Application') {
