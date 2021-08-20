@@ -67,9 +67,9 @@ node {
                     		credentialsId: 'bc-api-key',
                     		variable: 'BC_API')
                    ]) {
-      		response = sh(script:"checkov --file files/deploy.yml --bc-api-key $BC_API --repo-id gbaileymcewan/gbaileymcewa1430-shiftleftdemo -b main -o junitxml > result.xml || true", returnStdout:true).trim() // -o junitxml > result.xml || true"
+      		response = sh(script:"checkov --file deploy/pcc-dsvw.yaml --bc-api-key $BC_API --repo-id porec/pcc-dsvw -b main -o junitxml > result_bc.xml || true", returnStdout:true).trim() // -o junitxml > result_bc.xml || true"
                    }
-      	     response = sh(script:"cat result.xml", returnStdout:true)
+      	     response = sh(script:"cat result_bc.xml", returnStdout:true)
       	     print "${response}"
       	}
       	catch (err) {
