@@ -48,7 +48,7 @@ node {
           }
       }
 
-      stage('Checkov') {
+      stage('Check deployment file with Checkov') {
       	try {
                    response = sh(script:"checkov --file deploy/pcc-dsvw.yaml", returnStdout:true).trim() // -o junitxml > result.xml || true"
       	           print "${response}"
