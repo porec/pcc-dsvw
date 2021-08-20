@@ -61,7 +61,6 @@ node {
       }
 
       stage('Check deployment file with BridgeCrew integration') {
-      try {
       	     withCredentials([
                   	string(
                     		credentialsId: 'bc-api-key',
@@ -70,7 +69,7 @@ node {
       		response = sh(script:"checkov --file deploy/pcc-dsvw.yaml --bc-api-key $BC_API --repo-id porec/pcc-dsvw -b main")
                    }
       	     print "${response}"
-      	}
+
       }
 
       stage('Deploy Application') {
