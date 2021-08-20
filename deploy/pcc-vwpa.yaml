@@ -1,0 +1,47 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: evil
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: dsvw
+  name: dsvw
+  namespace: evil
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dsvw
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: dsvw
+    spec:
+      containers:
+      - image: porcer/pcc-dsvw
+        name: dsvw
+        command: ["pcc-dsvw/main.py"]
+        resources: {}
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dsvw
+  namespace: evil
+spec:
+  type: NodePort
+  ports:
+  - name: web
+    targetPort: 8000
+    port: 8000
+    nodePort: 30800
+  selector:
+    app: dsvw
