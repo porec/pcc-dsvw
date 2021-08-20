@@ -7,7 +7,7 @@ node {
     }
 
 
-    stage('Check image dependencies') {
+    stage('Check image dependencies using Prisma Cloud Compute Policies') {
        try {
          echo 'before plugin  scanning'
         withCredentials([usernamePassword(credentialsId: 'twistlock_creds', passwordVariable: 'TL_PASS', usernameVariable: 'TL_USER')]) {
