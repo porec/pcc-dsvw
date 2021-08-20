@@ -10,24 +10,10 @@ Damn Small Vulnerable Web [![Python 3.x](https://img.shields.io/badge/python-3.x
 Quick start
 ----
 
-Run the following command:
-```
-$ python3 dsvw.py
+Deploy manifest file deploy/pcc-dsvw.yaml
 
-[i] running HTTP server at 'http://127.0.0.1:8000'...
-```
+Check IP address of the Node where pod have been deployed
 
-and navigate your browser to http://127.0.0.1:8000/:
+and navigate your browser to http://<Node IP>:30800/:
 
 ![DSVW](http://i.imgur.com/9nG4mwu.png)
-
-Requirements
-----
-
-Python (**3.x**) is required for running this program. Items *XML External Entity (local)*, *XML External Entity (remote)* and *Blind XPath Injection (boolean)* require installation of `python-lxml` (e.g. `apt-get install python-lxml`). Otherwise, those will be disabled.
-
-To install lxml via pip, run the following command:
-
-```
-pip install -r requirements.txt
-```
