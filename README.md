@@ -12,14 +12,12 @@ Quick start
 
 Run the following command:
 ```
-$ python3 dsvw.py 
-Damn Small Vulnerable Web (DSVW) < 100 LoC (Lines of Code) #v0.2a
- by: Miroslav Stampar (@stamparm)
+$ python3 dsvw.py
 
-[i] running HTTP server at 'http://127.0.0.1:65412'...
+[i] running HTTP server at 'http://127.0.0.1:8000'...
 ```
 
-and navigate your browser to http://127.0.0.1:65412/:
+and navigate your browser to http://127.0.0.1:8000/:
 
 ![DSVW](http://i.imgur.com/9nG4mwu.png)
 
