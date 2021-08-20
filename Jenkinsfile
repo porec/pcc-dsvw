@@ -50,7 +50,7 @@ node {
 
       stage('Check deployment file with Checkov') {
       	try {
-                   response = sh(script:"checkov --file deploy/pcc-dsvw.yaml, returnStdout:true).trim() // -o junitxml > result.xml || true", returnStdout:true).trim() // -o junitxml > result.xml || true"
+                   response = sh(script:"checkov --file deploy/pcc-dsvw.yaml, returnStdout:true).trim() // -o junitxml > result.xml || true", returnStdout:true).trim() // -o junitxml > result.xml || true
       	           print "${response}"
                    junit skipPublishingChecks: true, testResults: "result.xml"
       	}
