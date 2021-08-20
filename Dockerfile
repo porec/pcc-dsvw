@@ -5,11 +5,10 @@ FROM alpine:3.11
 RUN apk --no-cache add git python3 py-lxml \
     && rm -rf /var/cache/apk/*
 
-WORKDIR /
-RUN git clone https://github.com/porec/pcc-dsvw.git
+RUN mkdir pcc-dsvw
 
-WORKDIR /PCC-DSVW
-RUN sed -i 's/127.0.0.1/0.0.0.0/g' dsvw.py
+COPY requirements.txt pcc-dsvw/requirements.txt
+COPY dsvw.py pcc-dsvw/dsvw.py
 
 EXPOSE 8000
 
