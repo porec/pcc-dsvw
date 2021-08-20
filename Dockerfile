@@ -14,6 +14,6 @@ RUN pip3 install -r pcc-dsvw/requirements.txt
 
 EXPOSE 8000
 
-CMD ["python3", "dsvw.py"]
+CMD ["python3", "pcc-dswv/dsvw.py"]
 
 #ENTRYPOINT ["/bin/bash"]
