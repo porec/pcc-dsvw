@@ -60,6 +60,24 @@ node {
       	}
       }
 
+      stage('Check deployment file with BridgeCrew integration') {
+      try {
+      	     withCredentials([
+                  	string(
+                    		credentialsId: 'bc-api-key',
+                    		variable: 'BC_API')
+                   ]) {
+      		response = sh(script:"checkov --file files/deploy.yml --bc-api-key $BC_API --repo-id gbaileymcewan/gbaileymcewa1430-shiftleftdemo -b main -o junitxml > result.xml || true", returnStdout:true).trim() // -o junitxml > result.xml || true"
+                   }
+      	     response = sh(script:"cat result.xml", returnStdout:true)
+      	     print "${response}"
+      	}
+      	catch (err) {
+                  echo err.getMessage()
+                  echo "Error detected"
+      	}
+      }
+
       stage('Deploy Application') {
           sh 'sudo kubectl apply -f deploy/pcc-dsvw.yaml'
           sh 'sudo sleep 10'
