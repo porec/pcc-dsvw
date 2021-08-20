@@ -50,18 +50,8 @@ node {
 
       stage('Checkov') {
       	try {
-                   //response = sh(script:"checkov --file deploy/pcc-dsvw.yaml", returnStdout:true).trim() // -o junitxml > result.xml || true"
-      	     withCredentials([
-                  	string(
-                    		credentialsId: 'bc-api-key',
-                    		variable: 'BC_API')
-                   ]) {
-      		response = sh(script:"checkov --file deploy/pcc-dsvw.yaml --bc-api-key $BC_API --repo-id porec/pcc-dsvw -b main -o junitxml > result.xml || true", returnStdout:true).trim() // -o junitxml > result.xml || true"
-                   }
-
-      	     //print "${response}"
-      	     response = sh(script:"cat result.xml", returnStdout:true)
-      	     print "${response}"
+                   response = sh(script:"checkov --file deploy/pcc-dsvw.yaml", returnStdout:true).trim() // -o junitxml > result.xml || true"
+      	           print "${response}"
                    junit skipPublishingChecks: true, testResults: "result.xml"
       	}
       	catch (err) {
