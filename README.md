@@ -10,10 +10,15 @@ Damn Small Vulnerable Web [![Python 3.x](https://img.shields.io/badge/python-3.x
 Quick start
 ----
 
-Deploy manifest file deploy/pcc-dsvw.yaml
+1. Deploy manifest file deploy/pcc-dsvw.yaml
 
-Check IP address of the Node where pod have been deployed
+2. Check IP address of the Node where pod have been deployed
 
-and navigate your browser to http://Node_IP:30800
+```
+kubectl get pods -n dsvw -o wide
+kubectl get nodes -o wide
+```
+
+3. navigate your browser to http://Node_IP:30800
 
 ![DSVW](http://i.imgur.com/9nG4mwu.png)
