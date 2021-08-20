@@ -71,9 +71,10 @@ node {
                    }
       	     print "${response}"
       	}
-          finally {
-          echo "Results in BridgeCrew Console"
-        }
+      	catch (err) {
+                  echo err.getMessage()
+                  echo "Results are published in BridgeCrew Console"
+      	}
       }
 
       stage('Deploy Application') {
