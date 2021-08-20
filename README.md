@@ -14,6 +14,6 @@ Deploy manifest file deploy/pcc-dsvw.yaml
 
 Check IP address of the Node where pod have been deployed
 
-and navigate your browser to http://Node_IP>:30800/:
+and navigate your browser to http://Node_IP:30800
 
 ![DSVW](http://i.imgur.com/9nG4mwu.png)
