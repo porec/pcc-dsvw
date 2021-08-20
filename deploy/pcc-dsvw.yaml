@@ -27,7 +27,6 @@ spec:
       containers:
       - image: porcer/pcc-dsvw
         name: dsvw
-        command: ["pcc-dsvw/dsvw.py"]
         resources: {}
 status: {}
 ---
