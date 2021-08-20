@@ -8,7 +8,7 @@ RUN apk --no-cache add git python3 py-lxml \
 WORKDIR /
 RUN git clone https://github.com/porec/pcc-dsvw.git
 
-WORKDIR /DSVW
+WORKDIR /PCC-DSVW
 RUN sed -i 's/127.0.0.1/0.0.0.0/g' dsvw.py
 
 EXPOSE 8000
