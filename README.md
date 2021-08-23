@@ -5,7 +5,7 @@ Damn Small Vulnerable Web [![Python 3.x](https://img.shields.io/badge/python-3.x
 
 **Damn Small Vulnerable Web** (DSVW) is a deliberately vulnerable web application written in under 100 lines of code, created for educational purposes. It supports majority of (most popular) web application vulnerabilities together with appropriate attacks.
 
-![XSS](http://i.imgur.com/BoSOgJs.png)
+![XSS](https://github.com/porec/pcc-dsvw/blob/main/images/attack.png)
 
 Quick start
 ----
@@ -21,4 +21,4 @@ kubectl get nodes -o wide
 
 3. navigate your browser to http://Node_IP:30800
 
-![DSVW](http://i.imgur.com/9nG4mwu.png)
+![DSVW](https://github.com/porec/pcc-dsvw/blob/main/images/options.png)
