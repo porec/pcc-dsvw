@@ -2,6 +2,8 @@
 
 FROM alpine:3.11
 
+LABEL application=damn_small_vulnerable_web
+
 RUN apk --no-cache add git python3 py-lxml \
     && rm -rf /var/cache/apk/*
 
