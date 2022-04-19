@@ -64,7 +64,7 @@ node {
       try {
       	     withCredentials([
                   	string(
-                    		credentialsId: 'bc-api-key',
+                    		credentialsId: 'pc-api-key',
                     		variable: 'BC_API')
                    ]) {
       		response = sh(script:"checkov --file deploy/pcc-dsvw.yaml --bc-api-key $BC_API --repo-id porec/pcc-dsvw -b main")
