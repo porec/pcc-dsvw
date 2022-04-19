@@ -65,10 +65,10 @@ node {
       	     withCredentials([
                   	string(
                     		credentialsId: 'pc-api-key',
-                    		variable: 'BC_API')
+                    		variable: 'PC_API')
                    ]) {
             sh 'export PRISMA_API_URL=https://api.eu.prismacloud.io'
-      		response = sh(script:"checkov --file deploy/pcc-dsvw.yaml --bc-api-key $BC_API")
+      		response = sh(script:"checkov --file deploy/pcc-dsvw.yaml --bc-api-key $PC_API")
                    }
       	     print "${response}"
       	}
